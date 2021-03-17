@@ -1,0 +1,17 @@
+# .github/workflows/main.yml
+
+# edit sesuai kebutuhan Anda
+name: Trigger Netlify Build daily on Weekday
+on:
+  schedule:
+    # jika Anda ingin menentukan sendiri waktu / interval, ganti value cron schedule di bawah ini
+    # jika Anda bingung bagaimana cara mengisi value interval cron di bawah ini, kunjungi https://crontab.guru/
+    # setiap jam 22:00 weekdays.
+    - cron: '0 22 * * MON-FRI'
+jobs:
+  build:
+    name: Netlify build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl request
+        run: curl -X POST -d {} https://api.netlify.com/build_hooks/6051e028cc165d6c5c8d4c7f
